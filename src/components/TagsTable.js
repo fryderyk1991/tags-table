@@ -29,7 +29,6 @@ const TagsTable = () => {
   const endIndex = startIndex + rowsPerPage;
   const paginatedData = tags.slice(startIndex, endIndex);
 
-
   return (
      <TableContainer component={Paper}>
       <Table sx={{ minWidth: 350 }} aria-label="simple table">

@@ -1,7 +1,6 @@
 import { createTheme, ThemeProvider, CssBaseline } from "@mui/material";
-
-
 import TagsTable from "./TagsTable";
+import SortSelect from "./SortSelect";
 
 const theme = createTheme({
   typography: {
@@ -19,6 +18,7 @@ const App = () => {
     <>
     <ThemeProvider theme={theme}>
         <CssBaseline />
+          <SortSelect />
           <TagsTable />
     </ThemeProvider>
     </>
