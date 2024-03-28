@@ -4,7 +4,7 @@ import { loadData } from "../providers/apiProvider";
 export const fetchTags = createAsyncThunk("tags/fetchTags", async () => {
   try {
     const response = await loadData();
-    return response;
+    return response.items;
   } catch (error) {
     throw new Error(`Failed to fetch tags: ${error.message}`);
   }
