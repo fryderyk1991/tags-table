@@ -16,6 +16,7 @@ const TagsTable = () => {
 
   const dispatch = useDispatch();
   const tags = useSelector((state) => state.tags.tags);
+  console.log(tags)
 
   useEffect(() => {
     dispatch(fetchTags());

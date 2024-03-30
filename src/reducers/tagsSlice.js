@@ -4,7 +4,8 @@ import { loadData } from "../providers/apiProvider";
 export const fetchTags = createAsyncThunk("tags/fetchTags", async () => {
   try {
     const response = await loadData();
-    return response.items;
+    return response
+    // return response.items;
   } catch (error) {
     throw new Error(`Failed to fetch tags: ${error.message}`);
   }
@@ -19,7 +20,20 @@ const initialState = {
 const tagsSlice = createSlice({
   name: "tags",
   initialState,
-  reducers: {},
+  reducers: {
+    sortTagsNameAlfa(state) {
+      const sortedTags = [...state.tags].sort((a, b) => a.name.localeCompare(b.name));
+      return {...state, tags: sortedTags}
+    },
+    sortTagsByCountAsc(state) {
+      const sortedTags = [...state.tags].sort((a, b) => a.count - b.count);
+      return {...state, tags: sortedTags}
+    },
+    sortTagsByCountDesc(state) {
+      const sortedTags = [...state.tags].sort((a, b) => b.count - a.count);
+      return {...state, tags: sortedTags}
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchTags.pending, (state) => {
@@ -37,4 +51,8 @@ const tagsSlice = createSlice({
   },
 });
 
+export const { sortTagsNameAlfa, sortTagsByCountAsc, sortTagsByCountDesc } = tagsSlice.actions
+
 export default tagsSlice.reducer;
+
+
