@@ -3,8 +3,9 @@ import { createTheme, ThemeProvider, CssBaseline } from "@mui/material";
 import SortSelect from "./SortSelect";
 import Pagination from "./Pagination";
 import { Container } from "@mui/material";
-import { useDispatch } from "react-redux";
+import { useDispatch} from "react-redux";
 import { fetchTags } from "../reducers/tagsSlice";
+import ErrorModal from "./ErrorModal";
 
 const theme = createTheme({
   typography: {
@@ -26,9 +27,9 @@ const App = () => {
     <Container maxWidth='md'>
       <ThemeProvider theme={theme}>
         <CssBaseline />
+        <ErrorModal/>
         <SortSelect />
         <Pagination />
-     
       </ThemeProvider>
     </Container>
   );
