@@ -1,6 +1,10 @@
+import React, {useEffect} from "react";
 import { createTheme, ThemeProvider, CssBaseline } from "@mui/material";
 import SortSelect from "./SortSelect";
 import Pagination from "./Pagination";
+import { Container } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { fetchTags } from "../reducers/tagsSlice";
 
 const theme = createTheme({
   typography: {
@@ -13,15 +17,20 @@ const theme = createTheme({
 });
 
 const App = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+      dispatch(fetchTags());
+  }, [dispatch]);
+  
   return (
-    <>
+    <Container maxWidth='md'>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <SortSelect />
         <Pagination />
      
       </ThemeProvider>
-    </>
+    </Container>
   );
 };
 

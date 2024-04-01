@@ -30,7 +30,7 @@ const SortSelect = () => {
       setOption(selectedOption);
     }
     return (
-        <Box sx={{ minWidth: 10 }}>
+        <Box marginTop='10px'>
           <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">Sort</InputLabel>
             <Select

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import TablePagination from "@mui/material/TablePagination";
+import { Box } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import TagsTable from "./TagsTable";
 import { useSelector } from "react-redux";
@@ -18,13 +19,12 @@ const Pagination = () => {
 
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(parseInt(event.target.value, 10));
-    console.log(rowsPerPage);
     setPage(0);
   };
 
   return (
     <div>
-      <div>
+      <Box display="flex" justifyContent='space-between' marginTop='10px'>
         <TextField
           id="rowsPerPage"
           label="Rows Per Page"
@@ -44,7 +44,7 @@ const Pagination = () => {
           page={page}
           onPageChange={handleChangePage}
         />
-      </div>
+      </Box>
 
       <TagsTable data={paginatedData} />
     </div>
