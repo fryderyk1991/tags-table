@@ -32,6 +32,10 @@ const tagsSlice = createSlice({
     sortTagsByCountDesc(state) {
       const sortedTags = [...state.tags].sort((a, b) => b.count - a.count);
       return {...state, tags: sortedTags}
+    },
+    updateArrayLength(state, action) {
+      const updateArray = [...state.tags].slice(0, action.payload);
+      return {...state, tags: updateArray}
     }
   },
   extraReducers: (builder) => {
@@ -51,7 +55,7 @@ const tagsSlice = createSlice({
   },
 });
 
-export const { sortTagsNameAlfa, sortTagsByCountAsc, sortTagsByCountDesc } = tagsSlice.actions
+export const { sortTagsNameAlfa, sortTagsByCountAsc, sortTagsByCountDesc, updateArrayLength } = tagsSlice.actions
 
 export default tagsSlice.reducer;
 

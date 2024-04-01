@@ -14,7 +14,6 @@ const SortSelect = () => {
     
     const handleChange = e => {
         const selectedOption = e.target.value;
-
         switch(selectedOption) {
           case 'asc':
               dispatch(sortTagsByCountAsc());

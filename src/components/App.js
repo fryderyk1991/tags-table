@@ -1,6 +1,6 @@
 import { createTheme, ThemeProvider, CssBaseline } from "@mui/material";
-import TagsTable from "./TagsTable";
 import SortSelect from "./SortSelect";
+import Pagination from "./Pagination";
 
 const theme = createTheme({
   typography: {
@@ -12,17 +12,17 @@ const theme = createTheme({
   },
 });
 
-
 const App = () => {
   return (
     <>
-    <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme}>
         <CssBaseline />
-          <SortSelect />
-          <TagsTable />
-    </ThemeProvider>
+        <SortSelect />
+        <Pagination />
+     
+      </ThemeProvider>
     </>
-  ) 
+  );
 };
 
 export default App;

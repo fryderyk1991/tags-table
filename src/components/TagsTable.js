@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { fetchTags } from "../reducers/tagsSlice";
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -8,29 +8,15 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import  TablePagination from "@mui/material/TablePagination";
 
-const TagsTable = () => { 
-  const [page, setPage] = useState(0);
-  const [rowsPerPage] = useState(10);
-
+const TagsTable = ( {data} ) => { 
   const dispatch = useDispatch();
-  const tags = useSelector((state) => state.tags.tags);
-  console.log(tags)
-
   useEffect(() => {
     dispatch(fetchTags());
   }, [dispatch]);
 
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
-
-  const startIndex = page * rowsPerPage;
-  const endIndex = startIndex + rowsPerPage;
-  const paginatedData = tags.slice(startIndex, endIndex);
-
   return (
+  <div>
      <TableContainer component={Paper}>
       <Table sx={{ minWidth: 350 }} aria-label="simple table">
         <TableHead>
@@ -40,7 +26,7 @@ const TagsTable = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {paginatedData.map((tag) => (
+          {data.map((tag) => (
             <TableRow
               key={tag.name}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -51,14 +37,8 @@ const TagsTable = () => {
           ))}
         </TableBody>
       </Table>
-      <TablePagination
-        component="div"
-        count={tags.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onPageChange={handleChangePage}
-      />
     </TableContainer>
+    </div>
   );
 };
 
