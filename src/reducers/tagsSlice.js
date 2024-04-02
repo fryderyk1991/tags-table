@@ -3,10 +3,8 @@ import { loadData } from "../providers/apiProvider";
 
 export const fetchTags = createAsyncThunk("tags/fetchTags", async () => {
   try {
-    await new Promise(resolve => setTimeout(resolve, 2000))
     const response = await loadData();
-    return response
-    // return response.items;
+    return response.items;
   } catch (error) {
     throw new Error(`Failed to fetch tags: ${error.message}`);
   }

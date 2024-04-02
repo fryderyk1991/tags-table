@@ -1,21 +1,11 @@
 import React, {useEffect} from "react";
-import { createTheme, ThemeProvider, CssBaseline } from "@mui/material";
 import SortSelect from "./SortSelect";
 import Pagination from "./Pagination";
-import { Container } from "@mui/material";
+import { Container, ThemeProvider } from "@mui/material";
 import { useDispatch} from "react-redux";
 import { fetchTags } from "../reducers/tagsSlice";
 import ErrorModal from "./ErrorModal";
-
-const theme = createTheme({
-  typography: {
-    fontFamily: "Roboto, sans-serif",
-    fontWeightLight: 300,
-    fontWeightRegular: 400,
-    fontWeightMedium: 500,
-    fontWeightBold: 700,
-  },
-});
+import theme from "../theme";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -24,14 +14,14 @@ const App = () => {
   }, [dispatch]);
   
   return (
-    <Container maxWidth='md'>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <ErrorModal/>
+    <ThemeProvider theme={theme}>
+       <Container maxWidth="sm">
+        <ErrorModal />
         <SortSelect />
         <Pagination />
-      </ThemeProvider>
-    </Container>
+      </Container >
+    </ThemeProvider>
+     
   );
 };
 

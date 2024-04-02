@@ -8,6 +8,8 @@ import { sortTagsNameAlfa, sortTagsByCountAsc, sortTagsByCountDesc } from '../re
 import { useState } from 'react';
 
 
+
+
 const SortSelect = () => {
     const [option, setOption] = useState(''); 
     const dispatch = useDispatch();
@@ -30,7 +32,7 @@ const SortSelect = () => {
       setOption(selectedOption);
     }
     return (
-        <Box marginTop='10px'>
+        <Box mt={2}>
           <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">Sort</InputLabel>
             <Select
@@ -39,6 +41,7 @@ const SortSelect = () => {
               value={option}
               label="Sort"
               onChange={handleChange}
+            
             >
               <MenuItem value='asc'>Ascending</MenuItem>
               <MenuItem value='desc'>Descending</MenuItem>

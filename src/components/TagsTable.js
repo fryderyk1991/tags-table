@@ -8,12 +8,11 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { Box } from "@mui/material";
 
-const TagsTable = ( {data} ) => { 
+const TagsTable = ( { data } ) => { 
   const loading = useSelector((state) => state.tags.loading);
   return (
-      <Box marginTop='10px'>
+      <>
         {loading ? (
           <LoadingCircle />
         ) : (
@@ -21,8 +20,8 @@ const TagsTable = ( {data} ) => {
           <Table sx={{ minWidth: 350 }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell>Name</TableCell>
-              <TableCell align="right">Count</TableCell>
+              <TableCell style={{ fontWeight: 'bold' }}>Name</TableCell>
+              <TableCell style={{ fontWeight: 'bold' }} align="right">Count</TableCell>
             </TableRow>
           </TableHead>
             <TableBody>
@@ -39,7 +38,7 @@ const TagsTable = ( {data} ) => {
         </Table>
       </TableContainer>
         )}
-    </Box>
+    </>
   );
 };
 

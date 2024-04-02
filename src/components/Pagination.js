@@ -5,7 +5,7 @@ import TextField from "@mui/material/TextField";
 import TagsTable from "./TagsTable";
 import { useSelector } from "react-redux";
 
-const Pagination = () => {
+const Pagination = ( {theme}) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const tags = useSelector((state) => state.tags.tags);
@@ -23,8 +23,8 @@ const Pagination = () => {
   };
 
   return (
-    <div>
-      <Box display="flex" justifyContent='space-between' marginTop='10px'>
+    <>
+      <Box display="flex" justifyContent='space-between' my={2}>
         <TextField
           id="rowsPerPage"
           label="Rows Per Page"
@@ -45,9 +45,8 @@ const Pagination = () => {
           onPageChange={handleChangePage}
         />
       </Box>
-
       <TagsTable data={paginatedData} />
-    </div>
+      </>
   );
 };
 
